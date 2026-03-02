@@ -1,0 +1,42 @@
+# robots.txt for Glowify AI Hairstyle App
+# https://sulanjun.github.io/hair-style/
+
+User-agent: *
+Allow: /
+
+# Block admin/private areas (if any)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+
+# Allow all main pages for indexing
+Allow: /index.html
+Allow: /best-ai-hairstyle-app.html
+Allow: /try-haircut-on-my-photo.html
+Allow: /virtual-hairstyle-try-on.html
+Allow: /ai-haircut-simulator.html
+Allow: /hairstyle-filter-app.html
+Allow: /should-i-get-bangs.html
+Allow: /would-short-hair-suit-me.html
+Allow: /what-hairstyle-suits-my-face.html
+Allow: /how-to-know-if-haircut-will-suit-you.html
+Allow: /what-haircut-makes-face-look-slimmer.html
+Allow: /try-wolf-cut-on-my-photo.html
+Allow: /curtain-bangs-virtual-try-on.html
+Allow: /butterfly-cut-virtual-preview.html
+Allow: /bob-haircut-virtual-preview.html
+Allow: /layered-haircut-try-on.html
+Allow: /trending-hairstyles-2026.html
+Allow: /tiktok-haircut-trends.html
+Allow: /wolf-cut-vs-butterfly-cut.html
+Allow: /best-short-haircuts-2026.html
+Allow: /hairstyle-for-round-face-ai.html
+
+# Don't block resources needed for rendering
+# Do NOT block CSS, JS, or image directories
+
+# Crawl-delay for polite crawling (optional)
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://sulanjun.github.io/hair-style/sitemap.xml
