@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>World Flags Quiz - Learn Flags of All Countries | World Flags Quiz</title>
+    <meta name="description" content="Test your knowledge of world flags! Interactive quiz game to learn flags from 195+ countries. Challenge yourself with flag identification quizzes and become a flag expert." />
+    <meta name="keywords" content="world flags quiz, flag identification game, country flags, learn flags, flag quiz app, geography quiz, world flags challenge, flag recognition" />
+    <meta name="author" content="World Flags Quiz" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://sulanjun.github.io/worldflagsquiz/" />
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://sulanjun.github.io/worldflagsquiz/logo.png" />
+    <meta property="og:title" content="World Flags Quiz - Learn Flags of All Countries" />
+    <meta property="og:description" content="Test your knowledge of world flags! Interactive quiz game to learn flags from 195+ countries. Challenge yourself now!" />
+    <meta property="og:url" content="https://sulanjun.github.io/worldflagsquiz/" />
+    <meta property="og:site_name" content="World Flags Quiz" />
+    <meta property="og:locale" content="en_US" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="World Flags Quiz - Learn Flags of All Countries" />
+    <meta name="twitter:description" content="Test your knowledge of world flags! Interactive quiz game to learn flags from 195+ countries." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&family=Poppins:wght@600;800&display=swap" rel="stylesheet" />
+
+    <style>
+        :root {
+          --bg: #0f0f13;
+          --card-bg: rgba(30, 30, 40, 0.6);
+          --text-primary: #ffffff;
+          --text-secondary: #a0a0b0;
+          --accent: #4CAF50;
+          --accent-hover: #66BB6A;
+          --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        body {
+          font-family: 'Inter', sans-serif;
+          background: var(--bg);
+          color: var(--text-primary);
+          overflow-x: hidden;
+          line-height: 1.6;
+          min-height: 100vh;
+          background-image:
+            radial-gradient(circle at 20% 30%, rgba(76, 175, 80, 0.12) 0%, transparent 40%),
+            radial-gradient(circle at 80% 70%, rgba(76, 175, 80, 0.08) 0%, transparent 50%);
+        }
+
+        h1, h2, h3 {
+          font-family: 'Poppins', sans-serif;
+          font-weight: 800;
+        }
+
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 2rem;
+        }
+
+        header {
+          padding: 1.5rem 0;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .logo {
+          font-size: 1.8rem;
+          font-weight: 800;
+          background: linear-gradient(135deg, #4CAF50, #81C784);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+        }
+
+        nav a {
+          color: var(--text-secondary);
+          text-decoration: none;
+          margin-left: 1.5rem;
+          font-weight: 500;
+          transition: color 0.3s;
+        }
+
+        nav a:hover {
+          color: var(--accent);
+        }
+
+        .hero {
+          padding: 6rem 0 4rem;
+          text-align: center;
+        }
+
+        .hero h1 {
+          font-size: 3.5rem;
+          margin-bottom: 1.2rem;
+          background: linear-gradient(135deg, #ffffff, #C8E6C9);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+          line-height: 1.2;
+        }
+
+        .hero p {
+          font-size: 1.2rem;
+          color: var(--text-secondary);
+          max-width: 600px;
+          margin: 0 auto 2.5rem;
+        }
+
+        .cta-buttons {
+          display: flex;
+          justify-content: center;
+          gap: 1.2rem;
+          flex-wrap: wrap;
+        }
+
+        .btn {
+          padding: 0.95rem 2.2rem;
+          border-radius: 14px;
+          font-weight: 600;
+          font-size: 1rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          text-decoration: none;
+          display: inline-block;
+          text-align: center;
+        }
+
+        .btn-primary {
+          background: linear-gradient(135deg, var(--accent), #66BB6A);
+          color: white;
+          box-shadow: 0 10px 28px rgba(76, 175, 80, 0.45);
+          border: none;
+        }
+
+        .btn-primary:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 14px 34px rgba(76, 175, 80, 0.65);
+        }
+
+        .features {
+          padding: 4rem 0 6rem;
+        }
+
+        .section-title {
+          text-align: center;
+          font-size: 2.2rem;
+          margin-bottom: 3.2rem;
+          color: white;
+        }
+
+        .cards {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 2rem;
+        }
+
+        .card {
+          background: var(--card-bg);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border: 1px solid var(--glass-border);
+          border-radius: 18px;
+          padding: 2rem;
+          transition: transform 0.4s, border-color 0.4s;
+        }
+
+        .card:hover {
+          transform: translateY(-8px);
+          border-color: rgba(76, 175, 80, 0.4);
+        }
+
+        .card h3 {
+          font-size: 1.4rem;
+          margin-bottom: 1rem;
+          color: white;
+        }
+
+        .card p {
+          color: var(--text-secondary);
+        }
+
+        footer {
+          padding: 2rem 0;
+          text-align: center;
+          color: var(--text-secondary);
+          font-size: 0.95rem;
+          border-top: 1px solid var(--glass-border);
+        }
+
+        footer a {
+          color: var(--accent);
+          text-decoration: none;
+          margin: 0 0.5rem;
+        }
+
+        footer a:hover {
+          text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+          .hero h1 {
+            font-size: 2.5rem;
+          }
+          .hero p {
+            font-size: 1rem;
+          }
+          .btn {
+            width: 100%;
+            max-width: 280px;
+          }
+          .cta-buttons {
+            flex-direction: column;
+            align-items: center;
+          }
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "World Flags Quiz",
+        "operatingSystem": "Android",
+        "applicationCategory": "EducationalApplication",
+        "description": "Interactive quiz game to learn flags from 195+ countries worldwide. Test your flag knowledge with challenging quizzes and become a flag expert.",
+        "image": "https://sulanjun.github.io/worldflagsquiz/logo.png",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.5",
+            "ratingCount": "1000"
+        },
+        "downloadUrl": "https://play.google.com/store/apps/details?id=com.causingtrouble.worldflags"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "World Flags Quiz",
+        "url": "https://sulanjun.github.io/worldflagsquiz/",
+        "logo": "https://sulanjun.github.io/worldflagsquiz/logo.png",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "wzeqiu@163.com",
+            "contactType": "customer support"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "World Flags Quiz",
+        "url": "https://sulanjun.github.io/worldflagsquiz/"
+    }
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="logo">World Flags Quiz</div>
+        <nav>
+            <a href="privacypolicy.html" target="_blank">Privacy</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Master World Flags<br>One Quiz at a Time</h1>
+        <p>
+            Challenge yourself with flags from 195+ countries! Test your geography knowledge, learn new flags, and compete with friends in this engaging quiz game.
+        </p>
+        <div class="cta-buttons">
+            <a href="https://play.google.com/store/apps/details?id=com.causingtrouble.worldflags"
+               target="_blank"
+               class="btn btn-primary">
+                Download Free · Start Quiz
+            </a>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <h2 class="section-title">Why Players Love FlagMaster</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>195+ Country Flags</h3>
+                <p>
+                    Explore flags from every country in the world. From well-known nations to remote territories — comprehensive flag collection at your fingertips.
+                </p>
+            </div>
+            <div class="card">
+                <h3>Multiple Quiz Modes</h3>
+                <p>
+                    Choose from easy, medium, or hard difficulty levels. Timed challenges, practice mode, and competitive quizzes to match your skill level.
+                </p>
+            </div>
+            <div class="card">
+                <h3>Learn While Playing</h3>
+                <p>
+                    Each quiz reveals interesting facts about countries. Discover capitals, populations, and geography trivia as you identify flags correctly.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" style="padding: 2rem 0 4rem;">
+        <h2 class="section-title">Quiz Features</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>🌍 Global Coverage</h3>
+                <p>Flags from all continents — Americas, Europe, Asia, Africa, and Oceania. Learn the world's diversity through its flags.</p>
+            </div>
+            <div class="card">
+                <h3>⏱️ Timed Challenges</h3>
+                <p>Race against the clock to identify flags. Perfect for quick thinking and improving your flag recognition speed.</p>
+            </div>
+            <div class="card">
+                <h3>📊 Track Progress</h3>
+                <p>Monitor your improvement with detailed statistics. See which flags you know best and focus on areas that need practice.</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <div class="container">
+        © 2026 World Flags Quiz. All rights reserved.<br>
+        <a href="privacypolicy.html" target="_blank">Privacy Policy</a>
+    </div>
+</footer>
+
+</body>
+</html>
