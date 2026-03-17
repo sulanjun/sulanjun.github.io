@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Video Download & Browser - Download Videos from Any Website</title>
+    <meta name="description" content="Download videos from any website with our all-in-one video downloader and browser. Browse the web, discover videos, and save them directly to your device for offline viewing." />
+    <meta name="keywords" content="video downloader, video browser, download videos, video saver, web browser with video download, download online videos, video download app, save videos offline" />
+    <meta name="author" content="Video Download & Browser" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://sulanjun.github.io/videodownload/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://sulanjun.github.io/videodownload/logo.png" />
+    <meta property="og:title" content="Video Download & Browser - Download Videos from Any Website" />
+    <meta property="og:description" content="Download videos from any website with our all-in-one video downloader and browser. Browse, discover, and save videos for offline viewing." />
+    <meta property="og:url" content="https://sulanjun.github.io/videodownload/" />
+    <meta property="og:site_name" content="Video Download & Browser" />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Video Download & Browser - Download Videos from Any Website" />
+    <meta name="twitter:description" content="Download videos from any website with our all-in-one video downloader and browser. Browse, discover, and save videos for offline viewing." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&family=Poppins:wght@600;800&display=swap" rel="stylesheet" />
+
+    <style>
+        :root {
+          --bg: #0f0f13;
+          --card-bg: rgba(30, 30, 40, 0.6);
+          --text-primary: #ffffff;
+          --text-secondary: #a0a0b0;
+          --accent: #2196F3;
+          --accent-hover: #42A5F5;
+          --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        body {
+          font-family: 'Inter', sans-serif;
+          background: var(--bg);
+          color: var(--text-primary);
+          overflow-x: hidden;
+          line-height: 1.6;
+          min-height: 100vh;
+          background-image:
+            radial-gradient(circle at 20% 30%, rgba(33, 150, 243, 0.12) 0%, transparent 40%),
+            radial-gradient(circle at 80% 70%, rgba(33, 150, 243, 0.08) 0%, transparent 50%);
+        }
+
+        h1, h2, h3 {
+          font-family: 'Poppins', sans-serif;
+          font-weight: 800;
+        }
+
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 2rem;
+        }
+
+        header {
+          padding: 1.5rem 0;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .logo {
+          font-size: 1.8rem;
+          font-weight: 800;
+          background: linear-gradient(135deg, #2196F3, #64B5F6);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+        }
+
+        nav a {
+          color: var(--text-secondary);
+          text-decoration: none;
+          margin-left: 1.5rem;
+          font-weight: 500;
+          transition: color 0.3s;
+        }
+
+        nav a:hover {
+          color: var(--accent);
+        }
+
+        .hero {
+          padding: 6rem 0 4rem;
+          text-align: center;
+        }
+
+        .hero h1 {
+          font-size: 3.5rem;
+          margin-bottom: 1.2rem;
+          background: linear-gradient(135deg, #ffffff, #BBDEFB);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+          line-height: 1.2;
+        }
+
+        .hero p {
+          font-size: 1.2rem;
+          color: var(--text-secondary);
+          max-width: 600px;
+          margin: 0 auto 2.5rem;
+        }
+
+        .cta-buttons {
+          display: flex;
+          justify-content: center;
+          gap: 1.2rem;
+          flex-wrap: wrap;
+        }
+
+        .btn {
+          padding: 0.95rem 2.2rem;
+          border-radius: 14px;
+          font-weight: 600;
+          font-size: 1rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          text-decoration: none;
+          display: inline-block;
+          text-align: center;
+        }
+
+        .btn-primary {
+          background: linear-gradient(135deg, var(--accent), #42A5F5);
+          color: white;
+          box-shadow: 0 10px 28px rgba(33, 150, 243, 0.45);
+          border: none;
+        }
+
+        .btn-primary:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 14px 34px rgba(33, 150, 243, 0.65);
+        }
+
+        .features {
+          padding: 4rem 0 6rem;
+        }
+
+        .section-title {
+          text-align: center;
+          font-size: 2.2rem;
+          margin-bottom: 3.2rem;
+          color: white;
+        }
+
+        .cards {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 2rem;
+        }
+
+        .card {
+          background: var(--card-bg);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border: 1px solid var(--glass-border);
+          border-radius: 18px;
+          padding: 2rem;
+          transition: transform 0.4s, border-color 0.4s;
+        }
+
+        .card:hover {
+          transform: translateY(-8px);
+          border-color: rgba(33, 150, 243, 0.4);
+        }
+
+        .card h3 {
+          font-size: 1.4rem;
+          margin-bottom: 1rem;
+          color: white;
+        }
+
+        .card p {
+          color: var(--text-secondary);
+        }
+
+        footer {
+          padding: 2rem 0;
+          text-align: center;
+          color: var(--text-secondary);
+          font-size: 0.95rem;
+          border-top: 1px solid var(--glass-border);
+        }
+
+        footer a {
+          color: var(--accent);
+          text-decoration: none;
+          margin: 0 0.5rem;
+        }
+
+        footer a:hover {
+          text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+          .hero h1 {
+            font-size: 2.5rem;
+          }
+          .hero p {
+            font-size: 1rem;
+          }
+          .btn {
+            width: 100%;
+            max-width: 280px;
+          }
+          .cta-buttons {
+            flex-direction: column;
+            align-items: center;
+          }
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Video Download & Browser",
+        "operatingSystem": "Android",
+        "applicationCategory": "UtilitiesApplication",
+        "description": "All-in-one video downloader and browser app. Browse the web, discover videos, and download them directly to your device for offline viewing.",
+        "image": "https://sulanjun.github.io/videodownload/logo.png",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.5",
+            "ratingCount": "1000"
+        },
+        "downloadUrl": "https://play.google.com/store/apps/details?id=com.causingtrouble.videodownload"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Video Download & Browser",
+        "url": "https://sulanjun.github.io/videodownload/",
+        "logo": "https://sulanjun.github.io/videodownload/logo.png",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "wzeqiu@163.com",
+            "contactType": "customer support"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Video Download & Browser",
+        "url": "https://sulanjun.github.io/videodownload/"
+    }
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="logo">Video Download & Browser</div>
+        <nav>
+            <a href="privacypolicy.html" target="_blank">Privacy</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Download Videos<br>From Any Website</h1>
+        <p>
+            Browse the web and download videos with one tap. Our built-in browser detects videos automatically, letting you save them for offline viewing anytime, anywhere.
+        </p>
+        <div class="cta-buttons">
+            <a href="https://play.google.com/store/apps/details?id=com.causingtrouble.videodownload"
+               target="_blank"
+               class="btn btn-primary">
+                Download Free · Get Started
+            </a>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <h2 class="section-title">Why Users Love Our App</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>Easy Video Download</h3>
+                <p>
+                    Automatically detect videos on any webpage. Just tap the download button and save videos directly to your device — no complicated steps required.
+                </p>
+            </div>
+            <div class="card">
+                <h3>Built-in Browser</h3>
+                <p>
+                    Explore the web with our fast, secure browser. Navigate to your favorite video sites, discover new content, and download videos without leaving the app.
+                </p>
+            </div>
+            <div class="card">
+                <h3>Multiple Formats Support</h3>
+                <p>
+                    Choose from various video qualities and formats. Download HD videos, standard definition, or compressed versions to save storage space on your device.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" style="padding: 2rem 0 4rem;">
+        <h2 class="section-title">Powerful Features</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>Fast Download Speed</h3>
+                <p>Experience blazing-fast downloads with our optimized engine. Multi-threaded downloading ensures maximum speed even for large video files.</p>
+            </div>
+            <div class="card">
+                <h3>Smart Download Manager</h3>
+                <p>Pause, resume, or cancel downloads anytime. Organize your downloads, view progress, and manage all your saved videos in one convenient place.</p>
+            </div>
+            <div class="card">
+                <h3>Private & Secure</h3>
+                <p>Your privacy matters. Browse in private mode, clear history with one tap, and keep your downloaded videos secure on your device.</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <div class="container">
+        © 2026 Video Download & Browser. All rights reserved.<br>
+        <a href="privacypolicy.html" target="_blank">Privacy Policy</a>
+    </div>
+</footer>
+
+</body>
+</html>
