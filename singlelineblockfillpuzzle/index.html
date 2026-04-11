@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Single Line Block Fill Puzzle - Brain Training Puzzle Game | Line Fill Game</title>
+    <meta name="description" content="Challenge your brain with Single Line Block Fill Puzzle! Draw a single continuous line to fill all blocks. 500+ levels of addictive puzzle gameplay. Free download now!" />
+    <meta name="keywords" content="single line puzzle, block fill game, line drawing puzzle, brain teaser, one line game, fill puzzle, logic puzzle, block puzzle, connect the dots, path puzzle" />
+    <meta name="author" content="Single Line Block Fill Puzzle" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://sulanjun.github.io/singlelineblockfillpuzzle/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://sulanjun.github.io/singlelineblockfillpuzzle/logo.png" />
+    <meta property="og:title" content="Single Line Block Fill Puzzle - Brain Training Puzzle Game" />
+    <meta property="og:description" content="Challenge your brain with Single Line Block Fill Puzzle! Draw a single continuous line to fill all blocks. 500+ levels of addictive puzzle gameplay." />
+    <meta property="og:url" content="https://sulanjun.github.io/singlelineblockfillpuzzle/" />
+    <meta property="og:site_name" content="Single Line Block Fill Puzzle" />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Single Line Block Fill Puzzle - Brain Training Puzzle Game" />
+    <meta name="twitter:description" content="Challenge your brain with Single Line Block Fill Puzzle! Draw a single continuous line to fill all blocks. 500+ levels of addictive puzzle gameplay." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&family=Poppins:wght@600;800&display=swap" rel="stylesheet" />
+
+    <style>
+        :root {
+          --bg: #0f0f13;
+          --card-bg: rgba(30, 30, 40, 0.6);
+          --text-primary: #ffffff;
+          --text-secondary: #a0a0b0;
+          --accent: #6C63FF;
+          --accent-hover: #8B84FF;
+          --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        body {
+          font-family: 'Inter', sans-serif;
+          background: var(--bg);
+          color: var(--text-primary);
+          overflow-x: hidden;
+          line-height: 1.6;
+          min-height: 100vh;
+          background-image:
+            radial-gradient(circle at 20% 30%, rgba(108, 99, 255, 0.12) 0%, transparent 40%),
+            radial-gradient(circle at 80% 70%, rgba(108, 99, 255, 0.08) 0%, transparent 50%);
+        }
+
+        h1, h2, h3 {
+          font-family: 'Poppins', sans-serif;
+          font-weight: 800;
+        }
+
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 2rem;
+        }
+
+        header {
+          padding: 1.5rem 0;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .logo {
+          font-size: 1.8rem;
+          font-weight: 800;
+          background: linear-gradient(135deg, #6C63FF, #A29BFE);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+        }
+
+        nav a {
+          color: var(--text-secondary);
+          text-decoration: none;
+          margin-left: 1.5rem;
+          font-weight: 500;
+          transition: color 0.3s;
+        }
+
+        nav a:hover {
+          color: var(--accent);
+        }
+
+        .hero {
+          padding: 6rem 0 4rem;
+          text-align: center;
+        }
+
+        .hero h1 {
+          font-size: 3.5rem;
+          margin-bottom: 1.2rem;
+          background: linear-gradient(135deg, #ffffff, #D4D4FF);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+          line-height: 1.2;
+        }
+
+        .hero p {
+          font-size: 1.2rem;
+          color: var(--text-secondary);
+          max-width: 600px;
+          margin: 0 auto 2.5rem;
+        }
+
+        .cta-buttons {
+          display: flex;
+          justify-content: center;
+          gap: 1.2rem;
+          flex-wrap: wrap;
+        }
+
+        .btn {
+          padding: 0.95rem 2.2rem;
+          border-radius: 14px;
+          font-weight: 600;
+          font-size: 1rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          text-decoration: none;
+          display: inline-block;
+          text-align: center;
+        }
+
+        .btn-primary {
+          background: linear-gradient(135deg, var(--accent), #8B84FF);
+          color: white;
+          box-shadow: 0 10px 28px rgba(108, 99, 255, 0.45);
+          border: none;
+        }
+
+        .btn-primary:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 14px 34px rgba(108, 99, 255, 0.65);
+        }
+
+        .features {
+          padding: 4rem 0 6rem;
+        }
+
+        .section-title {
+          text-align: center;
+          font-size: 2.2rem;
+          margin-bottom: 3.2rem;
+          color: white;
+        }
+
+        .cards {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 2rem;
+        }
+
+        .card {
+          background: var(--card-bg);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border: 1px solid var(--glass-border);
+          border-radius: 18px;
+          padding: 2rem;
+          transition: transform 0.4s, border-color 0.4s;
+        }
+
+        .card:hover {
+          transform: translateY(-8px);
+          border-color: rgba(108, 99, 255, 0.4);
+        }
+
+        .card h3 {
+          font-size: 1.4rem;
+          margin-bottom: 1rem;
+          color: white;
+        }
+
+        .card p {
+          color: var(--text-secondary);
+        }
+
+        footer {
+          padding: 2rem 0;
+          text-align: center;
+          color: var(--text-secondary);
+          font-size: 0.95rem;
+          border-top: 1px solid var(--glass-border);
+        }
+
+        footer a {
+          color: var(--accent);
+          text-decoration: none;
+          margin: 0 0.5rem;
+        }
+
+        footer a:hover {
+          text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+          .hero h1 {
+            font-size: 2.5rem;
+          }
+          .hero p {
+            font-size: 1rem;
+          }
+          .btn {
+            width: 100%;
+            max-width: 280px;
+          }
+          .cta-buttons {
+            flex-direction: column;
+            align-items: center;
+          }
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Single Line Block Fill Puzzle",
+        "operatingSystem": "Android",
+        "applicationCategory": "PuzzleApplication",
+        "description": "Challenge your brain with Single Line Block Fill Puzzle! Draw a single continuous line to fill all blocks. 500+ levels of addictive puzzle gameplay.",
+        "image": "https://sulanjun.github.io/singlelineblockfillpuzzle/logo.png",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.6",
+            "ratingCount": "2500"
+        },
+        "downloadUrl": "https://play.google.com/store/apps/details?id=com.causingtrouble.singlelineblockfill"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Single Line Block Fill Puzzle",
+        "url": "https://sulanjun.github.io/singlelineblockfillpuzzle/",
+        "logo": "https://sulanjun.github.io/singlelineblockfillpuzzle/logo.png",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "wzeqiu@163.com",
+            "contactType": "customer support"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Single Line Block Fill Puzzle",
+        "url": "https://sulanjun.github.io/singlelineblockfillpuzzle/"
+    }
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="logo">Line Block Puzzle</div>
+        <nav>
+            <a href="privacypolicy.html" target="_blank">Privacy</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>One Line.<br>All Blocks Filled.</h1>
+        <p>
+            Challenge your brain with this addictive puzzle game! Draw a single continuous line to fill every block on the board. Simple rules, endless possibilities. 500+ levels await!
+        </p>
+        <div class="cta-buttons">
+            <a href="https://play.google.com/store/apps/details?id=com.causingtrouble.singlelineblockfill"
+               target="_blank"
+               class="btn btn-primary">
+                Download Free · Start Puzzle
+            </a>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <h2 class="section-title">Why Players Love This Puzzle</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>500+ Challenging Levels</h3>
+                <p>
+                    Start easy, master the complex. With hundreds of carefully designed puzzles, you'll never run out of challenges. Each level tests your logic in new ways.
+                </p>
+            </div>
+            <div class="card">
+                <h3>Simple Rules, Deep Strategy</h3>
+                <p>
+                    Draw one continuous line to fill all blocks. Sounds easy? Each puzzle requires careful planning and strategic thinking to solve.
+                </p>
+            </div>
+            <div class="card">
+                <h3>Train Your Brain</h3>
+                <p>
+                    Improve spatial reasoning, problem-solving skills, and logical thinking. Perfect for keeping your mind sharp and active.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" style="padding: 2rem 0 4rem;">
+        <h2 class="section-title">Game Features</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>🧩 Multiple Grid Sizes</h3>
+                <p>From 3x3 beginner grids to complex 10x10 master challenges. Progress at your own pace with increasing difficulty.</p>
+            </div>
+            <div class="card">
+                <h3>💡 Hints When Stuck</h3>
+                <p>Get helpful hints to guide you through the toughest puzzles. Never get frustrated — always find the solution.</p>
+            </div>
+            <div class="card">
+                <h3>🏆 Track Progress</h3>
+                <p>Monitor your completion rate, best times, and achievements. Challenge yourself to improve with each puzzle.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" style="padding: 2rem 0 4rem;">
+        <h2 class="section-title">How to Play</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>Step 1: Choose a Level</h3>
+                <p>Select from hundreds of puzzles across different difficulty levels. Start with easy grids and work your way up.</p>
+            </div>
+            <div class="card">
+                <h3>Step 2: Draw Your Line</h3>
+                <p>Swipe to draw a single continuous line that passes through every block on the grid exactly once.</p>
+            </div>
+            <div class="card">
+                <h3>Step 3: Fill All Blocks</h3>
+                <p>Complete the puzzle when your line covers every block. No block left behind!</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <div class="container">
+        © 2026 Single Line Block Fill Puzzle. All rights reserved.<br>
+        <a href="privacypolicy.html" target="_blank">Privacy Policy</a>
+    </div>
+</footer>
+
+</body>
+</html>
