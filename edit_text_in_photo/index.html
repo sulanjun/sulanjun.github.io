@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit Text in Photo: AI Editor - Edit & Replace Text in Images</title>
+  <meta name="description" content="Edit text in photos with AI. Select an image, update or replace text, and create natural-looking results with an easy photo text editing workflow." />
+  <meta name="keywords" content="edit text in photo, AI photo editor, text editor photo, replace text in image, remove text from photo, image text editing, AI image editor" />
+  <meta name="author" content="Edit Text in Photo: AI Editor" />
+  <meta name="robots" content="index, follow" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Edit Text in Photo: AI Editor" />
+  <meta property="og:description" content="Edit, replace, or update text inside photos with an AI-assisted editing experience." />
+  <meta property="og:site_name" content="Edit Text in Photo: AI Editor" />
+  <meta property="og:locale" content="en_US" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Edit Text in Photo: AI Editor" />
+  <meta name="twitter:description" content="Edit and replace text inside photos with AI-assisted image editing." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&family=Poppins:wght@600;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #0f0f13;
+      --card-bg: rgba(30, 30, 40, 0.68);
+      --text-primary: #ffffff;
+      --text-secondary: #a9a9b8;
+      --accent: #7c4dff;
+      --accent-2: #29b6f6;
+      --glass-border: rgba(255,255,255,.1);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      line-height: 1.6;
+      min-height: 100vh;
+      background-image:
+        radial-gradient(circle at 18% 24%, rgba(124,77,255,.17) 0%, transparent 42%),
+        radial-gradient(circle at 82% 72%, rgba(41,182,246,.12) 0%, transparent 48%);
+    }
+    h1, h2, h3 { font-family: 'Poppins', sans-serif; font-weight: 800; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    header { padding: 1.5rem 0; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    .logo {
+      font-size: 1.45rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #b39ddb, #29b6f6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    nav a { color: var(--text-secondary); text-decoration: none; margin-left: 1.25rem; font-weight: 500; transition: color .3s; }
+    nav a:hover { color: #b39ddb; }
+    .hero { padding: 6rem 0 4rem; text-align: center; }
+    .badge {
+      display: inline-block;
+      padding: .45rem .8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(179,157,219,.35);
+      color: #d1c4e9;
+      background: rgba(124,77,255,.08);
+      font-size: .88rem;
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.6rem, 7vw, 4.7rem);
+      margin-bottom: 1.2rem;
+      background: linear-gradient(135deg, #ffffff, #d1c4e9 48%, #81d4fa);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      line-height: 1.08;
+    }
+    .hero p { font-size: 1.16rem; color: var(--text-secondary); max-width: 720px; margin: 0 auto 2.5rem; }
+    .cta-buttons { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; }
+    .btn { padding: .95rem 2.2rem; border-radius: 14px; font-weight: 700; font-size: 1rem; text-decoration: none; display: inline-block; text-align: center; transition: all .3s ease; }
+    .btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff; box-shadow: 0 10px 28px rgba(124,77,255,.35); }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(124,77,255,.5); }
+    .btn-secondary { color: #fff; border: 1px solid var(--glass-border); background: rgba(255,255,255,.04); }
+    .btn-secondary:hover { border-color: rgba(129,212,250,.5); transform: translateY(-3px); }
+    .features { padding: 4rem 0 6rem; }
+    .section-title { text-align: center; font-size: 2.2rem; margin-bottom: .8rem; }
+    .section-subtitle { text-align: center; max-width: 680px; margin: 0 auto 3.2rem; color: var(--text-secondary); }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+    .card { background: var(--card-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--glass-border); border-radius: 18px; padding: 2rem; transition: transform .35s, border-color .35s; }
+    .card:hover { transform: translateY(-7px); border-color: rgba(129,212,250,.38); }
+    .card-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+    .card h3 { font-size: 1.3rem; margin-bottom: .8rem; }
+    .card p { color: var(--text-secondary); }
+    .privacy-note { padding: 1rem 0 5rem; }
+    .privacy-box { border: 1px solid var(--glass-border); border-radius: 18px; padding: 2rem; background: rgba(255,255,255,.035); text-align: center; }
+    .privacy-box p { color: var(--text-secondary); max-width: 760px; margin: .6rem auto 1.4rem; }
+    footer { padding: 2rem 0; text-align: center; color: var(--text-secondary); font-size: .95rem; border-top: 1px solid var(--glass-border); }
+    footer a { color: #81d4fa; text-decoration: none; margin: 0 .5rem; }
+    footer a:hover { text-decoration: underline; }
+    @media (max-width: 768px) {
+      header { align-items: flex-start; }
+      .logo { max-width: 70%; }
+      nav a { margin-left: .75rem; }
+      .hero { padding-top: 4.5rem; }
+      .hero p { font-size: 1rem; }
+      .btn { width: 100%; max-width: 300px; }
+      .cta-buttons { flex-direction: column; align-items: center; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Edit Text in Photo: AI Editor",
+    "operatingSystem": "Android",
+    "applicationCategory": "PhotographyApplication",
+    "description": "AI-assisted photo editor for editing, replacing, and updating text inside images.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "downloadUrl": "https://play.google.com/store/apps/details?id=com.causingtrouble.image.text.editing"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Edit Text in Photo: AI Editor",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "wzeqiu@163.com",
+      "contactType": "customer support"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">Edit Text in Photo: AI Editor</div>
+      <nav>
+        <a href="#features">Features</a>
+        <a href="privacypolicy.html" target="_blank" rel="noopener">Privacy</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <span class="badge">AI-assisted photo text editing</span>
+      <h1>Edit Text<br>Inside Any Photo</h1>
+      <p>
+        Update, replace, or refine text in images with a simple AI-assisted workflow. Choose a photo, make your text changes, and create a natural-looking result without complicated editing tools.
+      </p>
+      <div class="cta-buttons">
+        <a href="https://play.google.com/store/apps/details?id=com.causingtrouble.image.text.editing" target="_blank" rel="noopener" class="btn btn-primary">Get it on Google Play</a>
+        <a href="#features" class="btn btn-secondary">Explore Features</a>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <h2 class="section-title">A Faster Way to Edit Photo Text</h2>
+      <p class="section-subtitle">Designed for quick text changes while keeping the surrounding image visually consistent.</p>
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon">✏️</div>
+          <h3>Edit & Replace Text</h3>
+          <p>Change wording inside an image without rebuilding the entire design from scratch.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">✨</div>
+          <h3>AI-Assisted Results</h3>
+          <p>Use AI-assisted image processing to blend edited areas naturally with the original photo.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🖼️</div>
+          <h3>Simple Photo Workflow</h3>
+          <p>Select an image, make your changes, preview the result, and save your edited photo.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" style="padding-top:0;">
+      <h2 class="section-title">Built for Everyday Edits</h2>
+      <p class="section-subtitle">Useful for screenshots, posters, social graphics, product images, signs, labels, and other photos that contain text.</p>
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon">⚡</div>
+          <h3>Quick Editing</h3>
+          <p>Make focused text changes with fewer manual steps than traditional image editing workflows.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🎯</div>
+          <h3>Focused Changes</h3>
+          <p>Keep attention on the text area you want to update while preserving the rest of the image as closely as possible.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔒</div>
+          <h3>Privacy Information</h3>
+          <p>Learn how selected images, device information, advertising data, and analytics may be processed in our Privacy Policy.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="privacy-note">
+      <div class="privacy-box">
+        <h2>Ready to edit?</h2>
+        <p>Download Edit Text in Photo: AI Editor on Google Play and start editing text directly inside your photos.</p>
+        <a href="https://play.google.com/store/apps/details?id=com.causingtrouble.image.text.editing" target="_blank" rel="noopener" class="btn btn-primary">Download on Google Play</a>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="container">
+      © 2026 Edit Text in Photo: AI Editor. All rights reserved.<br>
+      <a href="privacypolicy.html" target="_blank" rel="noopener">Privacy Policy</a>
+      <a href="mailto:wzeqiu@163.com">Contact</a>
+    </div>
+  </footer>
+</body>
+</html>
