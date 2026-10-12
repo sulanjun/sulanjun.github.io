@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#090b14" />
+  <title>AI Portraits: Face Swap</title>
+  <meta name="description" content="Choose a template, upload one clear photo, and create a new portrait with AI Portraits: Face Swap." />
+  <meta name="keywords" content="AI portrait maker, portrait templates, photo face swap, AI portraits, template face swap" />
+  <meta name="author" content="AI Portraits: Face Swap" />
+  <meta name="robots" content="index, follow" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="AI Portraits: Face Swap" />
+  <meta property="og:description" content="Choose a template and create a new AI portrait from your photo." />
+  <meta property="og:site_name" content="AI Portraits: Face Swap" />
+  <meta property="og:locale" content="en_US" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="AI Portraits: Face Swap" />
+  <meta name="twitter:description" content="Create AI portraits and portrait transformations from your photos." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #090b14;
+      --surface: rgba(22, 25, 43, 0.76);
+      --surface-solid: #15182a;
+      --text: #f8f7ff;
+      --muted: #adafc5;
+      --gold: #f6b84b;
+      --gold-soft: #ffd995;
+      --violet: #8d70ff;
+      --cyan: #51d5e9;
+      --line: rgba(255, 255, 255, 0.1);
+      --shadow: 0 28px 80px rgba(0, 0, 0, 0.38);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 9%, rgba(141, 112, 255, 0.18), transparent 32rem),
+        radial-gradient(circle at 92% 42%, rgba(81, 213, 233, 0.12), transparent 34rem),
+        radial-gradient(circle at 50% 100%, rgba(246, 184, 75, 0.1), transparent 32rem),
+        var(--bg);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.65;
+    }
+
+    a { color: inherit; }
+    h1, h2, h3 { font-family: "Manrope", sans-serif; line-height: 1.12; }
+    .container { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 24px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: "Manrope", sans-serif;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 13px;
+      color: #171016;
+      background: linear-gradient(140deg, var(--gold-soft), var(--gold));
+      box-shadow: 0 10px 28px rgba(246, 184, 75, 0.25);
+      font-size: 21px;
+    }
+
+    nav { display: flex; align-items: center; gap: 24px; }
+    nav a { color: var(--muted); font-weight: 600; text-decoration: none; transition: color 0.2s ease; }
+    nav a:hover, nav a:focus-visible { color: var(--gold-soft); }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(330px, 0.92fr);
+      align-items: center;
+      gap: 72px;
+      min-height: 690px;
+      padding: 52px 0 92px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 22px;
+      padding: 8px 13px;
+      border: 1px solid rgba(246, 184, 75, 0.28);
+      border-radius: 999px;
+      color: var(--gold-soft);
+      background: rgba(246, 184, 75, 0.07);
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .eyebrow::before {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 14px var(--gold);
+      content: "";
+    }
+
+    .hero h1 { max-width: 760px; font-size: clamp(3rem, 6vw, 5.55rem); letter-spacing: -0.055em; }
+    .hero h1 span {
+      color: transparent;
+      background: linear-gradient(100deg, var(--gold-soft), var(--violet) 52%, var(--cyan));
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    .hero-copy > p { max-width: 650px; margin: 25px 0 32px; color: var(--muted); font-size: 1.15rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 14px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 0 24px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .button:hover, .button:focus-visible { transform: translateY(-2px); }
+    .button-primary {
+      border-color: transparent;
+      color: #1b1310;
+      background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+      box-shadow: 0 14px 32px rgba(246, 184, 75, 0.24);
+    }
+    .button-primary:hover, .button-primary:focus-visible { box-shadow: 0 18px 38px rgba(246, 184, 75, 0.34); }
+    .button-secondary { background: rgba(255, 255, 255, 0.045); }
+    .button-secondary:hover, .button-secondary:focus-visible { border-color: rgba(141, 112, 255, 0.45); }
+
+    .visual { position: relative; min-height: 540px; }
+    .visual::before {
+      position: absolute;
+      inset: 10% 0 8%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(141, 112, 255, 0.25), rgba(81, 213, 233, 0.08) 44%, transparent 72%);
+      filter: blur(12px);
+      content: "";
+    }
+
+    .phone {
+      position: absolute;
+      top: 16px;
+      left: 50%;
+      width: min(322px, 78vw);
+      padding: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.17);
+      border-radius: 42px;
+      background: #101220;
+      box-shadow: var(--shadow);
+      transform: translateX(-50%) rotate(3deg);
+    }
+
+    .phone-screen {
+      overflow: hidden;
+      min-height: 500px;
+      padding: 22px;
+      border-radius: 32px;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(81, 213, 233, 0.25), transparent 11rem),
+        linear-gradient(155deg, #201a3a, #0c1020 70%);
+    }
+
+    .phone-top { display: flex; justify-content: space-between; color: #dfe0ec; font-size: 0.78rem; font-weight: 700; }
+    .portrait {
+      position: relative;
+      height: 300px;
+      margin: 36px 0 20px;
+      overflow: hidden;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 50% 37%, #f5c7ad 0 14%, transparent 14.5%),
+        radial-gradient(ellipse at 50% 42%, #382a57 0 25%, transparent 25.5%),
+        radial-gradient(ellipse at 50% 68%, #7b5ce0 0 31%, transparent 31.5%),
+        linear-gradient(140deg, #f2a65a, #7c54d7 54%, #38b6c7);
+    }
+
+    .portrait::before,
+    .portrait::after {
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      content: "";
+      transform: rotate(24deg);
+    }
+    .portrait::before { top: -24px; left: -28px; border-radius: 24px; }
+    .portrait::after { right: -25px; bottom: -24px; border-radius: 50%; }
+    .phone-label { color: var(--gold-soft); font-size: 0.75rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+    .phone-title { margin-top: 5px; font-family: "Manrope", sans-serif; font-size: 1.35rem; font-weight: 800; }
+    .phone-pills { display: flex; gap: 8px; margin-top: 15px; }
+    .phone-pills span { padding: 7px 10px; border-radius: 10px; color: #c9cadd; background: rgba(255,255,255,.07); font-size: .72rem; }
+
+    .float-card {
+      position: absolute;
+      z-index: 2;
+      width: 150px;
+      padding: 13px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(24, 27, 45, 0.86);
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+    }
+
+    .float-card strong { display: block; margin-top: 9px; font-size: 0.85rem; }
+    .mini-art { height: 96px; border-radius: 13px; }
+    .card-one { top: 90px; left: 0; transform: rotate(-8deg); }
+    .card-one .mini-art { background: linear-gradient(135deg, #ffcf8f, #d9719f 52%, #513881); }
+    .card-two { right: -8px; bottom: 58px; transform: rotate(7deg); }
+    .card-two .mini-art { background: linear-gradient(145deg, #56d5df, #526bdc 48%, #3a244f); }
+
+    section { padding: 92px 0; }
+    .section-heading { max-width: 720px; margin: 0 auto 48px; text-align: center; }
+    .section-heading .kicker { color: var(--gold); font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.78rem; }
+    .section-heading h2 { margin-top: 12px; font-size: clamp(2rem, 4vw, 3.35rem); letter-spacing: -0.035em; }
+    .section-heading p { margin-top: 16px; color: var(--muted); font-size: 1.06rem; }
+
+    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .feature-card {
+      min-height: 265px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(145deg, rgba(255,255,255,.065), rgba(255,255,255,.025));
+      box-shadow: 0 20px 50px rgba(0,0,0,.12);
+    }
+    .feature-icon { display: grid; place-items: center; width: 50px; height: 50px; margin-bottom: 28px; border-radius: 15px; background: rgba(246,184,75,.12); font-size: 1.45rem; }
+    .feature-card:nth-child(2) .feature-icon { background: rgba(141,112,255,.15); }
+    .feature-card:nth-child(3) .feature-icon { background: rgba(81,213,233,.13); }
+    .feature-card h3 { margin-bottom: 12px; font-size: 1.35rem; }
+    .feature-card p { color: var(--muted); }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: var(--surface);
+      overflow: hidden;
+    }
+    .step { position: relative; padding: 34px; }
+    .step + .step { border-left: 1px solid var(--line); }
+    .step-number { color: var(--gold); font-family: "Manrope", sans-serif; font-size: 0.82rem; font-weight: 800; letter-spacing: 0.12em; }
+    .step h3 { margin: 16px 0 10px; font-size: 1.3rem; }
+    .step p { color: var(--muted); }
+
+    .privacy-panel {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 42px;
+      padding: 48px;
+      border: 1px solid rgba(81, 213, 233, 0.2);
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 100% 0, rgba(81,213,233,.12), transparent 22rem),
+        var(--surface-solid);
+    }
+    .privacy-panel h2 { font-size: clamp(1.8rem, 3vw, 2.65rem); }
+    .privacy-panel p { max-width: 690px; margin-top: 13px; color: var(--muted); }
+
+    .final-cta { text-align: center; }
+    .final-cta h2 { font-size: clamp(2.2rem, 5vw, 4rem); letter-spacing: -0.04em; }
+    .final-cta p { max-width: 620px; margin: 18px auto 28px; color: var(--muted); font-size: 1.08rem; }
+
+    footer { border-top: 1px solid var(--line); color: var(--muted); }
+    .footer-inner { display: flex; justify-content: space-between; gap: 24px; padding: 30px 0; font-size: 0.92rem; }
+    .footer-links { display: flex; gap: 18px; }
+    .footer-links a { text-decoration: none; }
+    .footer-links a:hover, .footer-links a:focus-visible { color: var(--gold-soft); }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; gap: 30px; padding-top: 78px; text-align: center; }
+      .hero-copy > p { margin-left: auto; margin-right: auto; }
+      .actions { justify-content: center; }
+      .visual { min-height: 560px; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .feature-card { min-height: auto; }
+      .steps { grid-template-columns: 1fr; }
+      .step + .step { border-top: 1px solid var(--line); border-left: 0; }
+      .privacy-panel { grid-template-columns: 1fr; text-align: center; }
+    }
+
+    @media (max-width: 620px) {
+      .container { width: min(100% - 28px, 1160px); }
+      header { align-items: flex-start; }
+      .brand { max-width: 230px; }
+      nav { flex-direction: column; align-items: flex-end; gap: 8px; }
+      nav a:first-child { display: none; }
+      .hero { min-height: 0; padding: 58px 0 70px; }
+      .hero h1 { font-size: clamp(2.7rem, 15vw, 4rem); }
+      .button { width: 100%; }
+      .visual { min-height: 500px; }
+      .phone { width: 285px; }
+      .phone-screen { min-height: 450px; }
+      .portrait { height: 265px; }
+      .float-card { width: 116px; padding: 9px; }
+      .mini-art { height: 76px; }
+      .card-one { left: -5px; }
+      .card-two { right: -5px; }
+      section { padding: 70px 0; }
+      .privacy-panel { padding: 34px 24px; }
+      .footer-inner { flex-direction: column; text-align: center; align-items: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "AI Portraits: Face Swap",
+    "operatingSystem": "Android",
+    "applicationCategory": "PhotographyApplication",
+    "description": "Create AI portraits and portrait transformations from a selected portrait photo.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "downloadUrl": "https://play.google.com/store/apps/details?id=com.causingtrouble.face.swap"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "AI Portraits: Face Swap",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "wzeqiu@163.com",
+      "contactType": "customer support"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a class="brand" href="#top" aria-label="AI Portraits: Face Swap home">
+        <span class="brand-mark" aria-hidden="true">✦</span>
+        <span>AI Portraits: Face Swap</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="#features">Features</a>
+        <a href="privacypolicy.html">Privacy</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <span class="eyebrow">One photo. A whole new portrait.</span>
+          <h1>Turn your photo into a <span>new portrait</span></h1>
+          <p>Choose a template, select one clear photo, and create a natural face swap with AI.</p>
+          <div class="actions">
+            <a class="button button-primary" href="https://play.google.com/store/apps/details?id=com.causingtrouble.face.swap" target="_blank" rel="noopener">Get it on Google Play</a>
+            <a class="button button-secondary" href="#how-it-works">See how it works</a>
+          </div>
+        </div>
+
+        <div class="visual" aria-label="Decorative preview of portrait templates">
+          <div class="float-card card-one" aria-hidden="true">
+            <div class="mini-art"></div>
+            <strong>Dreamy portrait</strong>
+          </div>
+          <div class="phone" aria-hidden="true">
+            <div class="phone-screen">
+              <div class="phone-top"><span>9:41</span><span>● ● ●</span></div>
+              <div class="portrait"></div>
+              <div class="phone-label">Your new look</div>
+              <div class="phone-title">Studio Portrait</div>
+              <div class="phone-pills"><span>Portrait</span><span>Vibrant</span><span>AI</span></div>
+            </div>
+          </div>
+          <div class="float-card card-two" aria-hidden="true">
+            <div class="mini-art"></div>
+            <strong>Editorial Portrait</strong>
+          </div>
+        </div>
+      </section>
+
+      <section id="features">
+        <div class="section-heading">
+          <span class="kicker">Creative possibilities</span>
+          <h2>Your portrait, reimagined</h2>
+          <p>Designed for quick, expressive transformations without complicated editing tools.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">🪄</div>
+            <h3>AI Face Swap</h3>
+            <p>Create a new portrait by combining your photo with a template you select.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">🎨</div>
+            <h3>Portrait Templates</h3>
+            <p>Explore a growing collection of portrait templates for different looks and occasions.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">✨</div>
+            <h3>Template Collection</h3>
+            <p>Choose a template, upload your photo, and create your portrait in a few steps.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="how-it-works">
+        <div class="section-heading">
+          <span class="kicker">Simple by design</span>
+          <h2>From photo to portrait in three steps</h2>
+        </div>
+        <div class="steps">
+          <article class="step">
+            <span class="step-number">STEP 01</span>
+            <h3>Choose a style</h3>
+            <p>Explore the available templates and find a look you want to try.</p>
+          </article>
+          <article class="step">
+            <span class="step-number">STEP 02</span>
+            <h3>Select your photo</h3>
+            <p>Use a clear, well-lit portrait of one person with the face fully visible.</p>
+          </article>
+          <article class="step">
+            <span class="step-number">STEP 03</span>
+            <h3>Create and save</h3>
+            <p>Generate your new portrait, preview it in the app, and save your favorite result.</p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <div class="privacy-panel">
+          <div>
+            <h2>Your choices matter</h2>
+            <p>Your selected photo is uploaded only when you request a portrait. Our Privacy Policy explains processing, advertising choices, and how to request deletion.</p>
+          </div>
+          <a class="button button-secondary" href="privacypolicy.html">Read Privacy Policy</a>
+        </div>
+      </section>
+
+      <section class="final-cta">
+        <h2>Meet your new portrait</h2>
+        <p>Download AI Portraits: Face Swap and transform a favorite photo into something new.</p>
+        <a class="button button-primary" href="https://play.google.com/store/apps/details?id=com.causingtrouble.face.swap" target="_blank" rel="noopener">Download on Google Play</a>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 AI Portraits: Face Swap. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="privacypolicy.html">Privacy Policy</a>
+        <a href="mailto:wzeqiu@163.com">Contact</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
